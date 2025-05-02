@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <style>
+    #searchBox {
+      display: flex;
+      align-items: center;
+      max-width: 300px;
+      margin: 50px auto;
+    }
+    #siteSearchInput {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+    }
+    #searchIcon {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="searchBox">
+    <input type="text" id="siteSearchInput" placeholder="Search the site...">
+    <button id="searchIcon" onclick="goToSearch()">🔍</button>
+  </div>
+
+  <script>
+    function goToSearch() {
+      const query = encodeURIComponent(document.getElementById('siteSearchInput').value.trim());
+      if (query) {
+        window.location.href = 'search.html?q=' + query;
+      } else {
+        window.location.href = 'search.html';
+      }
+    }
+
+    document.getElementById('siteSearchInput').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        goToSearch();
+      }
+    });
+  </script>
+</body>
+</html>
